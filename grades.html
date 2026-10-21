@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электронный журнал | Smart Campus ВТК</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { darkbg: '#0b0f19', cardbg: '#111827' } } }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-darkbg text-gray-100 min-h-screen flex flex-col">
+
+    <!-- HEADER -->
+    <header class="glass sticky top-0 z-50 px-6 py-3 flex items-center justify-between border-b border-gray-800">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white">
+                <i class="fa-solid fa-cube"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-sm text-white">SmartNation Журнал оценок</h1>
+                <p class="text-[11px] text-gray-400">Высший технический колледж г. Кокшетау</p>
+            </div>
+        </div>
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <a href="dashboard.html" class="text-gray-300 hover:text-white transition">Кабинет</a>
+            <a href="schedule.html" class="text-gray-300 hover:text-white transition">Расписание</a>
+            <a href="grades.html" class="text-emerald-400">Оценки</a>
+            <a href="ai-tutor.html" class="text-gray-300 hover:text-white transition">ИИ Тьютор</a>
+        </nav>
+        <a href="dashboard.html" class="px-4 py-1.5 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-200 rounded-xl text-xs font-semibold transition">Назад в кабинет</a>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6 flex flex-col space-y-6">
+        <div class="glass p-6 rounded-2xl border border-gray-800">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                <div>
+                    <h2 class="text-lg font-bold text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-book-open text-emerald-400"></i> <span>Табель успеваемости (SmartNation 2.0)</span>
+                    </h2>
+                    <p class="text-xs text-gray-400 mt-0.5">Студент: Айдарұлы Нұрсұлтан • Группа: ПО-31</p>
+                </div>
+                <div class="bg-indigo-600/20 border border-indigo-500/30 px-4 py-2 rounded-xl text-xs">
+                    <span class="text-gray-400">Текущий GPA:</span> <span class="font-bold text-emerald-400 text-sm ml-1">3.85 / 4.0</span>
+                </div>
+            </div>
+
+            <!-- GRADES TABLE -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead>
+                        <tr class="border-b border-gray-800 text-gray-400">
+                            <th class="pb-3 font-semibold">Дисциплина</th>
+                            <th class="pb-3 font-semibold">Преподаватель</th>
+                            <th class="pb-3 font-semibold text-center">КТ 1 (РК1)</th>
+                            <th class="pb-3 font-semibold text-center">КТ 2 (РК2)</th>
+                            <th class="pb-3 font-semibold text-center">Экзамен</th>
+                            <th class="pb-3 font-semibold text-center">Итог</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800/60">
+                        <tr>
+                            <td class="py-4 font-semibold text-white">Разработка ПО и алгоритмы</td>
+                            <td class="py-4 text-gray-400">Ахметов Б.К.</td>
+                            <td class="py-4 text-center font-mono text-emerald-400 font-bold">95</td>
+                            <td class="py-4 text-center font-mono text-emerald-400 font-bold">94</td>
+                            <td class="py-4 text-center font-mono text-indigo-400 font-bold">96</td>
+                            <td class="py-4 text-center"><span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 font-bold">95 (A)</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 font-semibold text-white">Сетевое администрирование</td>
+                            <td class="py-4 text-gray-400">Смирнов В.А.</td>
+                            <td class="py-4 text-center font-mono text-emerald-400 font-bold">90</td>
+                            <td class="py-4 text-center font-mono text-emerald-400 font-bold">92</td>
+                            <td class="py-4 text-center font-mono text-indigo-400 font-bold">91</td>
+                            <td class="py-4 text-center"><span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 font-bold">92 (A-)</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 font-semibold text-white">Базы данных и SQL</td>
+                            <td class="py-4 text-gray-400">Касымова А.М.</td>
+                            <td class="py-4 text-center font-mono text-blue-400 font-bold">85</td>
+                            <td class="py-4 text-center font-mono text-blue-400 font-bold">89</td>
+                            <td class="py-4 text-center font-mono text-indigo-400 font-bold">90</td>
+                            <td class="py-4 text-center"><span class="px-2.5 py-1 rounded-lg bg-blue-500/20 text-blue-400 font-bold">88 (B+)</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 font-semibold text-white">Архитектура аппаратного обеспечения</td>
+                            <td class="py-4 text-gray-400">Ибраев Д.Т.</td>
+                            <td class="py-4 text-center font-mono text-emerald-400 font-bold">92</td>
+                            <td class="py-4 text-center font-mono text-emerald-400 font-bold">95</td>
+                            <td class="py-4 text-center font-mono text-indigo-400 font-bold">94</td>
+                            <td class="py-4 text-center"><span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 font-bold">94 (A)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="glass border-t border-gray-800 py-4 px-6 text-center text-xs text-gray-400 mt-auto">
+        <p>© 2026 Высший технический колледж г. Кокшетау • Электронный журнал</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | Smart Campus ВТК</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { darkbg: '#0b0f19', cardbg: '#111827' } } }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-darkbg text-gray-100 min-h-screen flex flex-col">
+
+    <!-- HEADER -->
+    <header class="glass sticky top-0 z-50 px-6 py-3 flex items-center justify-between border-b border-gray-800">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white">
+                <i class="fa-solid fa-cube"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-sm text-white">Личный кабинет ВТК</h1>
+                <p class="text-[11px] text-gray-400" id="userRoleSubtitle">Авторизованный пользователь</p>
+            </div>
+        </div>
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <a href="dashboard.html" class="text-indigo-400">Кабинет</a>
+            <a href="schedule.html" class="text-gray-300 hover:text-white transition">Расписание</a>
+            <a href="grades.html" class="text-gray-300 hover:text-white transition">Оценки</a>
+            <a href="ai-tutor.html" class="text-gray-300 hover:text-white transition">ИИ Тьютор</a>
+        </nav>
+        <div class="flex items-center space-x-3">
+            <button onclick="logout()" class="px-3 py-1.5 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5">
+                <i class="fa-solid fa-right-from-bracket"></i> <span>Выйти</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- LEFT COLUMN (8 cols) -->
+        <div class="lg:col-span-8 flex flex-col space-y-6">
+            <!-- PROFILE CARD -->
+            <div class="glass p-6 rounded-2xl border border-indigo-500/20 relative overflow-hidden">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 rounded-2xl bg-indigo-600/30 border border-indigo-500/40 flex items-center justify-center text-2xl font-bold text-indigo-300">
+                            ВТК
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-white" id="userNameDisplay">Загрузка...</h2>
+                            <p class="text-xs text-indigo-300 mt-0.5" id="userSpecDisplay">Группа: ПО-31</p>
+                            <p class="text-[11px] text-gray-400 mt-1">ID: VTK-2026-9842 • Высший технический колледж г. Кокшетау</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-2 rounded-xl shadow-lg">
+                        <div class="w-12 h-12 bg-gray-900 flex items-center justify-center text-[8px] text-white font-mono text-center leading-none p-1 rounded">
+                            [QR ID]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUICK NAVIGATION TO SEPARATE PAGES -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="schedule.html" class="glass p-5 rounded-2xl border border-gray-800 hover:border-indigo-500/50 transition flex items-center justify-between group">
+                    <div>
+                        <h3 class="font-bold text-sm text-white group-hover:text-indigo-400 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-calendar-days text-indigo-400"></i> <span>Расписание занятий</span>
+                        </h3>
+                        <p class="text-xs text-gray-400 mt-1">Полное расписание пар на неделю с аудиториями</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-500 group-hover:text-indigo-400 transition"></i>
+                </a>
+                <a href="grades.html" class="glass p-5 rounded-2xl border border-gray-800 hover:border-emerald-500/50 transition flex items-center justify-between group">
+                    <div>
+                        <h3 class="font-bold text-sm text-white group-hover:text-emerald-400 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-book-open text-emerald-400"></i> <span>Электронный журнал</span>
+                        </h3>
+                        <p class="text-xs text-gray-400 mt-1">Оценки КТ1, КТ2, сессия и расчет GPA</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-500 group-hover:text-emerald-400 transition"></i>
+                </a>
+            </div>
+
+            <!-- RECENT ACTIVITY / NOTIFICATIONS -->
+            <div class="glass p-6 rounded-2xl border border-gray-800">
+                <h3 class="font-bold text-base text-white mb-4 flex items-center space-x-2">
+                    <i class="fa-solid fa-bell text-indigo-400"></i> <span>Системные уведомления ВТК</span>
+                </h3>
+                <div class="space-y-3 text-xs">
+                    <div class="p-3.5 rounded-xl bg-gray-900/60 border border-gray-800 text-gray-300">
+                        <span class="text-emerald-400 font-semibold block mb-0.5">✓ Турникет главного корпуса</span>
+                        Успешный проход через турникет зафиксирован в 08:15 AM.
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-gray-900/60 border border-gray-800 text-gray-300">
+                        <span class="text-indigo-400 font-semibold block mb-0.5">ℹ Изменение в расписании</span>
+                        Лекция по базам данных перенесена в аудиторию 304.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN (4 cols) -->
+        <div class="lg:col-span-4 flex flex-col space-y-6">
+            <div class="glass p-6 rounded-2xl border border-indigo-500/30 bg-gradient-to-b from-indigo-950/20 to-transparent">
+                <h3 class="font-bold text-sm text-white mb-2">⚡ Быстрые действия ВТК</h3>
+                <p class="text-xs text-gray-400 mb-4">Официальные электронные запросы в 1 клик.</p>
+                <div class="space-y-2">
+                    <button onclick="alert('Справка с места учебы с цифровой подписью успешно сформирована!')" class="w-full py-2.5 bg-gray-800 hover:bg-gray-700 text-xs text-indigo-300 font-semibold rounded-xl transition border border-gray-700 text-left px-4 flex items-center justify-between">
+                        <span>Справка с места учебы</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="alert('Заявление на заселение в общежитие ВТК принято в обработку!')" class="w-full py-2.5 bg-gray-800 hover:bg-gray-700 text-xs text-indigo-300 font-semibold rounded-xl transition border border-gray-700 text-left px-4 flex items-center justify-between">
+                        <span>Заявление в общежитие</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="glass p-6 rounded-2xl border border-gray-800 text-center">
+                <div class="w-12 h-12 bg-violet-600/20 rounded-xl border border-violet-500/30 flex items-center justify-center mx-auto mb-3 text-violet-400">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h4 class="font-bold text-sm text-white">Нужна помощь ИИ?</h4>
+                <p class="text-xs text-gray-400 mt-1 mb-4">Задайте вопрос нашему ИИ-тьютору по любой дисциплине колледжа.</p>
+                <a href="ai-tutor.html" class="inline-block w-full py-2.5 bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-xl text-xs shadow transition">
+                    Открыть ИИ Тьютор
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="glass border-t border-gray-800 py-4 px-6 text-center text-xs text-gray-400 mt-auto">
+        <p>© 2026 Высший технический колледж г. Кокшетау • Smart Campus</p>
+    </footer>
+
+    <script>
+        const userData = JSON.parse(localStorage.getItem('vtk_user'));
+        if (!userData) {
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('userNameDisplay').innerText = userData.name;
+            document.getElementById('userSpecDisplay').innerText = userData.group;
+            document.getElementById('userRoleSubtitle').innerText = "Роль: " + userData.role.toUpperCase();
+        }
+
+        function logout() {
+            localStorage.removeItem('vtk_user');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

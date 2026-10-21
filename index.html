@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Campus | ВТК г. Кокшетау</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { darkbg: '#0b0f19', cardbg: '#111827' } } }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-darkbg text-gray-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+    <!-- HEADER -->
+    <header class="glass sticky top-0 z-50 px-6 py-4 flex items-center justify-between border-b border-gray-800">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                <i class="fa-solid fa-cube text-white text-lg"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-base tracking-tight text-white">Smart Campus ВТК</h1>
+                <p class="text-[11px] text-gray-400">Высший технический колледж г. Кокшетау</p>
+            </div>
+        </div>
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <a href="index.html" class="text-indigo-400">Главная</a>
+            <a href="schedule.html" class="text-gray-300 hover:text-white transition">Расписание</a>
+            <a href="grades.html" class="text-gray-300 hover:text-white transition">Оценки</a>
+            <a href="ai-tutor.html" class="text-gray-300 hover:text-white transition">ИИ Тьютор</a>
+        </nav>
+        <div class="flex items-center space-x-3">
+            <a href="login.html" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                <i class="fa-solid fa-right-to-bracket"></i> <span>Личный кабинет</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6 flex flex-col justify-center items-center text-center my-12">
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 mb-4">
+            Интеллектуальная система управления колледжем
+        </span>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight max-w-3xl">
+            Цифровой колледж <span class="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">ВТК г. Кокшетау</span>
+        </h1>
+        <p class="text-gray-400 text-base md:text-lg max-w-2xl mt-4">
+            Современная экосистема SmartNation: электронный журнал оценок, отдельное интерактивное расписание занятий, контроль посещаемости и умный ИИ-помощник.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 mt-8">
+            <a href="login.html" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-2xl shadow-lg shadow-indigo-600/40 transition flex items-center space-x-2">
+                <i class="fa-solid fa-user-lock"></i> <span>Войти в систему</span>
+            </a>
+            <a href="schedule.html" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-200 font-semibold rounded-2xl transition flex items-center space-x-2">
+                <i class="fa-solid fa-calendar-days text-indigo-400"></i> <span>Смотреть расписание</span>
+            </a>
+            <a href="grades.html" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-200 font-semibold rounded-2xl transition flex items-center space-x-2">
+                <i class="fa-solid fa-book-open text-emerald-400"></i> <span>Электронный журнал</span>
+            </a>
+        </div>
+
+        <!-- STATS GRID -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-5xl mt-16">
+            <div class="glass p-5 rounded-2xl border border-gray-800 text-left">
+                <p class="text-xs text-gray-400">Специальностей</p>
+                <p class="text-2xl font-bold text-white mt-1">12+</p>
+            </div>
+            <div class="glass p-5 rounded-2xl border border-gray-800 text-left">
+                <p class="text-xs text-gray-400">Студентов ВТК</p>
+                <p class="text-2xl font-bold text-indigo-400 mt-1">1,450+</p>
+            </div>
+            <div class="glass p-5 rounded-2xl border border-gray-800 text-left">
+                <p class="text-xs text-gray-400">Средняя посещаемость</p>
+                <p class="text-2xl font-bold text-emerald-400 mt-1">98.4%</p>
+            </div>
+            <div class="glass p-5 rounded-2xl border border-gray-800 text-left">
+                <p class="text-xs text-gray-400">ИИ Ассистент</p>
+                <p class="text-2xl font-bold text-violet-400 mt-1">24/7 Online</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="glass border-t border-gray-800 py-4 px-6 text-center text-xs text-gray-400">
+        <p>© 2026 Высший технический колледж г. Кокшетау • Проект Smart Campus</p>
+    </footer>
+</body>
+</html>

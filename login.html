@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация | Smart Campus ВТК</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { darkbg: '#0b0f19', cardbg: '#111827' } } }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-darkbg text-gray-100 min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER -->
+    <header class="glass px-6 py-4 flex items-center justify-between border-b border-gray-800">
+        <a href="index.html" class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white">
+                <i class="fa-solid fa-cube"></i>
+            </div>
+            <span class="font-bold text-sm text-white">Smart Campus ВТК</span>
+        </a>
+        <a href="index.html" class="text-xs text-gray-400 hover:text-white transition"><i class="fa-solid fa-arrow-left mr-1"></i> На главную</a>
+    </header>
+
+    <!-- LOGIN FORM CONTAINER -->
+    <main class="flex-1 flex items-center justify-center p-4">
+        <div class="glass p-8 rounded-3xl border border-indigo-500/20 max-w-md w-full shadow-2xl">
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 bg-indigo-600/20 rounded-2xl border border-indigo-500/30 flex items-center justify-center mx-auto mb-3 text-indigo-400 text-xl">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white">Вход в систему ВТК</h2>
+                <p class="text-xs text-gray-400 mt-1">Введите учетные данные для доступа в личный кабинет</p>
+            </div>
+
+            <!-- Error message container -->
+            <div id="errorMsg" class="hidden mb-4 p-3 rounded-xl bg-red-500/20 border border-red-500/30 text-red-300 text-xs text-center font-medium">
+                Неверный логин или пароль! Используйте демо-данные ниже.
+            </div>
+
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Email / Логин</label>
+                    <input type="text" id="loginEmail" required placeholder="student@vtk.edu.kz" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Пароль</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-sm shadow-lg shadow-indigo-600/30 transition mt-2">
+                    Войти в кабинет
+                </button>
+            </form>
+
+            <!-- Demo Credentials Box -->
+            <div class="mt-6 pt-6 border-t border-gray-800">
+                <p class="text-xs font-bold text-indigo-300 mb-2">📌 Демо логины и пароли для входа:</p>
+                <div class="space-y-2 text-[11px] text-gray-300 bg-gray-900/80 p-3 rounded-xl border border-gray-800">
+                    <div class="flex justify-between items-center border-b border-gray-800 pb-1.5">
+                        <span>🎓 Студент:</span>
+                        <span class="font-mono text-indigo-400">student@vtk.edu.kz / vtk2026</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-gray-800 pb-1.5 pt-1">
+                        <span>👨‍🏫 Преподаватель:</span>
+                        <span class="font-mono text-indigo-400">teacher@vtk.edu.kz / vtk2026</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-1">
+                        <span>🏛️ Администратор:</span>
+                        <span class="font-mono text-indigo-400">admin@vtk.edu.kz / vtk2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="glass border-t border-gray-800 py-4 px-6 text-center text-xs text-gray-400">
+        <p>© 2026 Высший технический колледж г. Кокшетау</p>
+    </footer>
+
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const pass = document.getElementById('loginPassword').value.trim();
+            const errorBox = document.getElementById('errorMsg');
+
+            // Hardcoded valid demo accounts
+            const accounts = {
+                "student@vtk.edu.kz": { role: "student", name: "Айдарұлы Нұрсұлтан", group: "ПО-31" },
+                "teacher@vtk.edu.kz": { role: "teacher", name: "Ахметов Б.К.", group: "Преподаватель ИТ" },
+                "admin@vtk.edu.kz": { role: "admin", name: "Дирекция ВТК", group: "Администрация" }
+            };
+
+            if (accounts[email] && pass === "vtk2026") {
+                localStorage.setItem('vtk_user', JSON.stringify(accounts[email]));
+                window.location.href = 'dashboard.html';
+            } else {
+                errorBox.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
